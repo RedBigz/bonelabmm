@@ -13,6 +13,34 @@ Download the .exe from the [releases](https://github.com/RedBigz/bonelabmm/relea
 ### From source
 See [the compiling section](#compiling) if you want to contribute or build it yourself.
 
+## Basics
+### Profiles
+By default all your mods before running for the first time will be put into a profile named **main**.
+
+To create a profile, run either:
+```
+blmm> profile new <name>
+```
+or...
+```ps1
+./blmm.exe profile new <name>
+```
+
+### Adding Mods
+Run `browse bl` and go to INSTALL_MODS_HERE. Add new mods there, and then add the mod barcodes to your profile with `profile addmod`, for example:
+```ps1
+./blmm.exe profile addmod RedBigz.ExampleMod
+```
+
+### Launching a Profile
+Run this command:
+```ps1
+./blmm.exe profile activate <profile name>
+```
+After you ran the command, launch Bonelab.
+
+**For other commands run `./blmm.exe help`.**
+
 ## Compiling
 First, clone the repo.
 
