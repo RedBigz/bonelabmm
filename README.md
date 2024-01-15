@@ -1,9 +1,11 @@
-<div style="text-align:center">
+<p align="center">
 <img src="res/icon.png">
-<h1>Bonelab Mod Manager</h1>
+</p>
+<h1 align="center">Bonelab Mod Manager</h1>
+<p align="center">
 BLMM is a CLI app which allows you to create custom mod profiles in Bonelab for Traditional Map/Weapon Mods.
 <b>This is not for code mods.</b>
-</div>
+</p>
 
 ## Running
 ### Binaries
