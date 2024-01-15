@@ -1,5 +1,6 @@
-./build
-./dist
 .venv
 blmm.exe
 main.spec
+build/main/
+build/
+dist
