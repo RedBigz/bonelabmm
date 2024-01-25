@@ -69,7 +69,7 @@ def execute(args):
                             nms = len(mods['barcodes'])
                             
                             for i, barcode in enumerate(mods["barcodes"]):
-                                print(f"{i + 1}/{nms} {barcode}", end="\r" if i < nms - 1 else "\n")
+                                print(f"{i + 1}/{nms} {barcode}" + " " * 20, end="\r" if i < nms - 1 else "\n")
                                 os.symlink(os.path.join(BACKUP, barcode), os.path.join(BL_MODS_OLD, barcode))
                             
                             print(f"Activated {profile_name}.")
@@ -86,6 +86,10 @@ def execute(args):
                             bc_name = args[3]
                         else:
                             bc_name = input(f"Enter Barcode: ")
+
+                        if not os.path.exists(os.path.join(BACKUP, bc_name)):
+                            print("Mod doesn't exist")
+                            return
                         
                         if profile_name == current_profile:
                             os.symlink(os.path.join(BACKUP, bc_name), os.path.join(BL_MODS_OLD, bc_name))
@@ -146,7 +150,8 @@ def execute(args):
             paths = {
                 "bl": BL_DATA,
                 "blmm": BASEDIR,
-                "mods": BACKUP
+                "mods": BACKUP,
+                "profiles": PROFILES
             }
 
             path = paths[args[1]] if len(args) > 1 else paths["bl"]
@@ -219,7 +224,8 @@ if nms != 0:
         nmf = os.path.join(NEWMODS, file)
         shutil.copytree(nmf, os.path.join(BACKUP, file))
         shutil.rmtree(nmf)
-        print(f"{i + 1}/{nms} {file}", end="\r" if i < nms - 1 else "\n")
+        print(f"{i + 1}/{nms} {file}" + " " * 20, end="\r" if i < nms - 1 else "\n")
+        execute(["profile", "addmod", "main", file]) # Adds new mods to "main"
     
     print("-" * 15)
 
